@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+:root {
+  /* Near-black deep navy — the calm base the brief asks most of the page
+     to live in. Neon is a moment, not a wash. */
+  --bg: #07070f;
+  --surface: #0d0d1c;
+  --surface-2: #131226;
+  --line: rgba(244, 243, 247, 0.1);
+  /* 0.4 alpha -> ~3.5:1 against --bg, clearing WCAG 1.4.11's 3:1 non-text
+     contrast minimum for the interactive borders (buttons, header) this
+     token is used on. */
+  --line-strong: rgba(244, 243, 247, 0.4);
+  --fg: #f4f3f7;
+  --muted: #a6a3ba;
+  /* WCAG AA (4.5:1) against --bg and --surface — was #726f8a (4.16:1,
+     failed for the small-text uses it's actually applied to: kickers,
+     meta labels, footer copy). */
+  --subtle: #827fab;
+
+  /* SKILL UP's own gradient, sampled from the real logo: electric blue ->
+     violet -> magenta. Used sparingly — text gradients, one hairline, one
+     button — not as a background wash. */
+  --blue: #3b82f6;
+  --violet: #7c5cfc;
+  --purple: #9333ea;
+  /* Lightened from the sampled #c026d3 so --bg-colored button text (near-
+     black) still clears 4.5:1 at this end of --gradient-brand. */
+  --magenta: #cf3ade;
+  --orange: #ff7a29;
+
+  --gradient-brand: linear-gradient(100deg, var(--blue), var(--violet) 55%, var(--magenta));
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-blue: var(--blue);
+  --color-violet: var(--violet);
+  --color-purple: var(--purple);
+  --color-magenta: var(--magenta);
+  --color-orange: var(--orange);
+  --font-sans: var(--font-georgian);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-georgian), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--violet);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+/* Gradient text — the one recurring brand signature, used on a handful of
+   key words only, never on full paragraphs. */
+.text-brand-gradient {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Fine dotted grid — translates the FB graphics' dotted texture into a
+   restrained, low-contrast page pattern instead of decorative clutter. */
+.dot-grid {
+  background-image: radial-gradient(var(--line-strong) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.hairline-grid {
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 96px 96px;
+}
+
+/* ---- Scroll reveal ---------------------------------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.3, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
