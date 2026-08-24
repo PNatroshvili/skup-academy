@@ -66,7 +66,7 @@ npm run build
    ```
    Type:  CNAME
    Host:  academy
-   Value: PNatroshvili.github.io
+   Value: pnatroshvili.github.io
    TTL:   Auto / 3600
    ```
 
