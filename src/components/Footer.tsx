@@ -12,8 +12,8 @@ export default function Footer() {
             <Image
               src="/brand/skillup-mark.png"
               alt={`${nav.brand} ლოგო`}
-              width={148}
-              height={92}
+              width={229}
+              height={100}
               className="h-7 w-auto object-contain"
             />
             <p className="mt-5 max-w-[32ch] text-sm text-muted">{footer.tagline}</p>

@@ -15,8 +15,8 @@ export default function Header() {
           <Image
             src="/brand/skillup-mark.png"
             alt={`${nav.brand} ლოგო`}
-            width={148}
-            height={92}
+            width={229}
+            height={100}
             priority
             className="h-8 w-auto object-contain"
           />

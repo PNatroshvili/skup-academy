@@ -60,36 +60,33 @@ export default function Hero() {
           </Reveal>
         </div>
 
-        {/* Right — brand panel */}
+        {/* Right — brand panel: SKILL UP's own cover-photo pattern (cropped
+            clean of logo/text), not a generic decorative graphic. */}
         <div className="lg:col-span-5">
           <Reveal delay={140} className="h-full">
-            <div className="relative flex h-full min-h-[320px] flex-col justify-between overflow-hidden rounded-2xl border border-line-strong bg-surface p-8">
-              <div className="dot-grid pointer-events-none absolute inset-0 opacity-40" />
-              <div
-                className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full opacity-25 blur-3xl"
-                style={{ background: "var(--gradient-brand)" }}
+            <div className="relative h-full min-h-[420px] overflow-hidden rounded-2xl border border-line-strong">
+              <Image
+                src="/brand/hero-pattern.jpg"
+                alt=""
+                fill
+                priority
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/10 to-bg/30" />
 
-              <div className="relative flex items-center justify-between">
-                <span className="text-[11px] uppercase tracking-[0.14em] text-subtle">
-                  {nav.brand} · {nav.brandKa}
-                </span>
-                <span className="h-2 w-2 rounded-full" style={{ background: "var(--gradient-brand)" }} />
+              <div className="relative flex h-full flex-col justify-between p-8">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] uppercase tracking-[0.14em] text-white/70">
+                    {nav.brand} · {nav.brandKa}
+                  </span>
+                  <span className="h-2 w-2 rounded-full" style={{ background: "var(--gradient-brand)" }} />
+                </div>
+
+                <p className="max-w-[30ch] text-sm text-white/85">
+                  გრაფიკული დიზაინის აკადემია, თბილისი — Photoshop და Illustrator ერთ კურსში.
+                </p>
               </div>
-
-              <div className="relative flex flex-1 items-center justify-center py-10">
-                <Image
-                  src="/brand/skillup-mark.png"
-                  alt="SKILL UP ლოგო"
-                  width={340}
-                  height={210}
-                  className="w-full max-w-[300px] object-contain"
-                />
-              </div>
-
-              <p className="relative border-t border-line pt-5 text-sm text-muted">
-                გრაფიკული დიზაინის აკადემია, თბილისი — Photoshop და Illustrator ერთ კურსში.
-              </p>
             </div>
           </Reveal>
         </div>
